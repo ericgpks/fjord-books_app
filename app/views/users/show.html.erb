@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>postal code:</strong>
+  <%= @user.postal_code %>
+</p>
+
+<p>
+  <strong>address:</strong>
+  <%= @user.address %>
+</p>
+
+<p>
+  <strong>introduction:</strong>
+  <%= @user.introduction %>
+</p>
+
+<%= link_to t('views.common.edit'), edit_user_path(@user) %> |
+<%= link_to t('views.common.back'), users_path %>
