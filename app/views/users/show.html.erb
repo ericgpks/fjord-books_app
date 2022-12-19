@@ -20,5 +20,7 @@
   <%= @user.introduction %>
 </p>
 
-<%= link_to t('views.common.edit'), edit_user_path(@user) %> |
+<% if @user.id == current_user %>
+  <%= link_to t('views.common.edit'), edit_user_path(@user) %> |
+<% end %>
 <%= link_to t('views.common.back'), users_path %>

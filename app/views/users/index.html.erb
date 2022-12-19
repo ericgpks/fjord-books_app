@@ -21,7 +21,9 @@
       <td><%= user.address %></td>
       <td><%= user.introduction %></td>
       <td><%= link_to t('views.common.show'), user %></td>
-      <td><%= link_to t('views.common.edit'), edit_user_path(user) %></td>
+      <% if user.id == current_user.id %>
+        <td><%= link_to t('views.common.edit'), edit_user_path(user) %></td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>

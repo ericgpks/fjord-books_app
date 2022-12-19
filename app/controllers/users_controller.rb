@@ -7,15 +7,19 @@ class UsersController < ApplicationController
   end
   def show
     @user = User.find(params[:id])
-    binding.break
   end
   def edit
-    @user = User.find(params[:id])
-    binding.break
+    if params[:id].to_i == current_user.id
+      @user = User.find(params[:id])
+    else
+      redirect_to users_path
+    end
   end
   def update
-    user = User.find(params[:id])
-    user.save!
+    if params[:id].to_i == current_user.id
+      user = User.find(params[:id])
+      user.save!
+    end
     redirect_to users_path
   end
 
