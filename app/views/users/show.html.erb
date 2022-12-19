@@ -1,22 +1,22 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><%= t('notice') %></p>
 
 <p>
-  <strong>email:</strong>
+  <strong><%= t('views.user.email') %>:</strong>
   <%= @user.email %>
 </p>
 
 <p>
-  <strong>postal code:</strong>
+  <strong><%= t('views.user.postal code') %>:</strong>
   <%= @user.postal_code %>
 </p>
 
 <p>
-  <strong>address:</strong>
+  <strong><%= t('views.user.address') %>:</strong>
   <%= @user.address %>
 </p>
 
 <p>
-  <strong>introduction:</strong>
+  <strong><%= t('views.user.introduction') %>:</strong>
   <%= @user.introduction %>
 </p>
 
