@@ -17,10 +17,17 @@ class UsersController < ApplicationController
   end
   def update
     if params[:id].to_i == current_user.id
-      user = User.find(params[:id])
-      user.save!
+      user = User.find(params[:id].to_i)
+      respond_to do |format|
+        if current_user.update(user_params)
+          format.html { redirect_to user, notice: t('controllers.common.notice_update', name: Book.model_name.human) }
+          format.json { render :show, status: :ok, location: user }
+        else
+          format.html { render :edit }
+          format.json { render json: user.errors, status: :unprocessable_entity }
+        end
+      end
     end
-    redirect_to users_path
   end
 
   private
