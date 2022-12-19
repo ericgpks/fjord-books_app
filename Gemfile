@@ -43,6 +43,7 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'spring'
   gem 'web-console', '>= 4.1.0'
+  gem "debug", ">= 1.0.0"
 end
 
 group :test do
@@ -64,3 +65,4 @@ gem 'carrierwave'
 gem 'kaminari'
 
 gem 'devise'
+
