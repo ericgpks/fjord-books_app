@@ -32,9 +32,9 @@
 en:
   notice:
     success:
-      create: "%{name} was successfully created."
-      update: "%{name} was successfully updated."
-      destroy: "%{name} was successfully destroyed."
+      create: "Book was successfully created."
+      update: "Book was successfully updated."
+      destroy: "Book was successfully destroyed."
 
   books:
     index:

@@ -31,9 +31,10 @@
 
 ja:
   notice:
-    Book was successfully created: "本の登録に成功しました。"
-    Book was successfully updated: "本の更新に成功しました。"
-    Book was successfully destroyed: "本の削除に成功しました。"
+    success:
+      create: "本の登録に成功しました"
+      update: "本の更新に成功しました"
+      destroy: "本の削除に成功しました"
 
   books:
     index:
