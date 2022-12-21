@@ -32,9 +32,9 @@
 ja:
   notice:
     success:
-      create: "本の登録に成功しました"
-      update: "本の更新に成功しました"
-      destroy: "本の削除に成功しました"
+      create: "%{name}の登録に成功しました"
+      update: "%{name}の更新に成功しました"
+      destroy: "%{name}の削除に成功しました"
 
   books:
     index:
