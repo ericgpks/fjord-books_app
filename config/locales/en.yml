@@ -31,10 +31,27 @@
 
 en:
   notice:
-    Book was successfully created: "Book was successfully created."
-    Book was successfully updated: "Book was successfully updated."
-    Book was successfully destroyed: "Book was successfully destroyed."
+    success:
+      create: "%{name} was successfully created."
+      update: "%{name} was successfully updated."
+      destroy: "%{name} was successfully destroyed."
 
   books:
     index:
+      Books: "Books"
+      Show: "Show"
+      Edit: "Edit"
+      Destroy: "Destroy"
+      New Book: "New Book"
       Are you sure?: "Are you sure?"
+    new:
+      New Book: "New Book"
+      Back: "Back"
+      submit: "submit"
+    show:
+      Edit: "Edit"
+      Back: "Back"
+    edit:
+      Editing Book: "Editing Book"
+      show: "show"
+      Back: "Back"
