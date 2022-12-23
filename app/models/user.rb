@@ -5,14 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :avatar
-  has_many :followings
-  has_many :followers
+  has_many :follows
 
   def followings
-    self.followings
+    follow_ids = Follow.where(follower_user_id: self.id).pluck(:follow_user_id)
+    User.where(id: follow_ids)
   end
 
   def followers
-    self.followes
+    follower_ids = Follow.where(follow_user_id: self.id).pluck(:follower_user_id)
+    User.where(id: follower_ids)
   end
 end
