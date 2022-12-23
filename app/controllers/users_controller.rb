@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @follow_flag = Follow.where(follow_user_id: params[:id], follower_user_id: current_user.id).exists?
     @followings_count = followings.count
     @followes_count = followers.count
   end
@@ -21,6 +22,14 @@ class UsersController < ApplicationController
     )
     if follow.save
       redirect_to users_path
+    end
+  end
+
+  def unfollow
+    unfollow_user_id = params[:user_id].to_i
+    follow_record = Follow.where(follow_user_id: unfollow_user_id, follower_user_id: current_user.id)
+    if follow_record.exist?
+      Follow.destroy([follow_record.id])
     end
   end
 
