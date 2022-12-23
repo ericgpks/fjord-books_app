@@ -13,18 +13,20 @@
   </thead>
 
   <tbody>
-  <% @followings.each do |following| %>
-    <tr>
-      <th>
-        <% if following.avatar.attached? %>
-          <%= image_tag following.avatar.variant(resize_to_fill: [30, 30]) %>
-        <% end %>
-      </th>
-      <td><%= following.email %></td>
-      <td><%= following.name %></td>
-      <td><%= following.postal_code %></td>
-      <td><%= following.address %></td>
-    </tr>
+  <% unless @followings.blank? %>
+    <% @followings.each do |following| %>
+      <tr>
+        <th>
+          <% if following.avatar.attached? %>
+            <%= image_tag following.avatar.variant(resize_to_fill: [30, 30]) %>
+          <% end %>
+        </th>
+        <td><%= following.email %></td>
+        <td><%= following.name %></td>
+        <td><%= following.postal_code %></td>
+        <td><%= following.address %></td>
+      </tr>
+    <% end %>
   <% end %>
   </tbody>
 </table>
