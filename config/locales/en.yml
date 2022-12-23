@@ -37,21 +37,21 @@ en:
       destroy: "%{name} was successfully destroyed."
 
   books:
-    index:
-      Books: "Books"
-      Show: "Show"
-      Edit: "Edit"
-      Destroy: "Destroy"
-      New Book: "New Book"
-      Are you sure?: "Are you sure?"
-    new:
-      New Book: "New Book"
-      Back: "Back"
-      submit: "submit"
-    show:
-      Edit: "Edit"
-      Back: "Back"
-    edit:
-      Editing Book: "Editing Book"
-      show: "show"
-      Back: "Back"
+    show: "show"
+    back: "back"
+    new: "new"
+    submit: "submit"
+    editing: "Editing"
+    confirm: "Are you sure?"
+
+  activerecotd:
+    models:
+      book: "book"
+    attributes:
+      book:
+        books: "books"
+        show: "show"
+        edit: "edit"
+        destroy: "destroy"
+        new: "new"
+
