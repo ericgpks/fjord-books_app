@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :users, only: %i(index show)
 
   post '/follow', to: 'users#follow'
+  get '/users/:id/followings', to: 'users#followings'
 end
