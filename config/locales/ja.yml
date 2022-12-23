@@ -39,6 +39,7 @@ ja:
   books:
     show: "表示"
     back: "戻る"
+    new: "追加"
     submit: "登録する"
     editing: "本の編集"
     confirm: "削除してよろしいですか？"
