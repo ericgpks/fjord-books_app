@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 
   post '/follow', to: 'users#follow'
   get '/users/:id/followings', to: 'users#followings'
+  get '/users/:id/followers', to: 'users#followers'
 end
