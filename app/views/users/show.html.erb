@@ -5,6 +5,12 @@
 <% end %>
 
 <p>
+  <%= link_to "followings", controller: "users", action: "followings", id: @user.id %>
+  ||
+  <%= link_to "followers", controller: "users", action: "followers", id: @user.id %>
+</p>
+
+<p>
   <strong><%= User.human_attribute_name(:email) %>:</strong>
   <%= @user.email %>
 </p>
