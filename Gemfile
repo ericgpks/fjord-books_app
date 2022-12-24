@@ -34,6 +34,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'debug', '>= 1.0.0'
   gem 'erb_lint', require: false
   gem 'faker'
   gem 'i18n_generators'
@@ -44,7 +45,6 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'spring'
   gem 'web-console', '>= 4.1.0'
-  gem "debug", ">= 1.0.0"
 end
 
 group :test do

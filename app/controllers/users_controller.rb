@@ -20,17 +20,16 @@ class UsersController < ApplicationController
       follow_user_id: follow_user_id,
       follower_user_id: current_user.id
     )
-    if follow.save
-      redirect_to users_path
-    end
+    redirect_to users_path if follow.save
   end
 
   def unfollow
     unfollow_user_id = params[:user_id].to_i
     follow_record = Follow.where(follow_user_id: unfollow_user_id, follower_user_id: current_user.id)
-    if follow_record.exist?
-      Follow.destroy([follow_record.id])
-    end
+    return unless follow_record.exists?
+
+    Follow.destroy([follow_record.ids])
+    redirect_to users_path
   end
 
   def followings
@@ -40,5 +39,4 @@ class UsersController < ApplicationController
   def followers
     @followers = User.find(params[:id]).followers
   end
-
 end
