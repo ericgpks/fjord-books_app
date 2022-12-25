@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if params[:id].to_i == current_user.id
+    if check_editing_user
       @user = User.find(params[:id])
     else
       redirect_to users_path
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    return unless params[:id].to_i == current_user.id
+    return unless check_editing_user
 
     user = User.find(params[:id].to_i)
     if current_user.update(user_params)
@@ -32,5 +32,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :postal_code, :address, :introduction)
+  end
+
+  def check_editing_user
+    params[:id].to_i == current_user.id
   end
 end
