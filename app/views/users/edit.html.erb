@@ -1,4 +1,4 @@
-<h1>userの編集</h1>
+<h1><%= t('controllers.common.editing', name: User.model_name.human) %></h1>
 
 <%= render 'form', user: @user %>
 

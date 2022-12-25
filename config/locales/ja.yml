@@ -216,22 +216,19 @@ ja:
       title_new: "%{name}の新規作成"
       title_edit: "%{name}の編集"
       logout: 'ログアウト'
+      sign_in: 'ログイン'
     pagination:
       first: '最初'
       last: '最後'
       previous: '前'
       next: '次'
       truncate: '...'
-    user:
-      email: 'メールアドレス'
-      postal code: '郵便番号'
-      address: '住所'
-      introduction: '自己紹介'
-      users: 'ユーザー一覧'
-      sign_in: 'ログイン'
+    notice: "成功しました"
+    alert: "失敗しました"
+    users: 'ユーザー一覧'
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
       notice_update: "%{name}が更新されました。"
       notice_destroy: "%{name}が削除されました。"
-
+      editing: "%{name}の編集"
