@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
     user = User.find(params[:id].to_i)
     if current_user.update(user_params)
-      redirect_to user, notice: t('controllers.common.notice_update', name: Book.model_name.human)
+      redirect_to user, notice: t('controllers.common.notice_update', name: User.model_name.human)
     else
       render :edit
     end
