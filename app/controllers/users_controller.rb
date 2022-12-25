@@ -21,14 +21,10 @@ class UsersController < ApplicationController
     return unless params[:id].to_i == current_user.id
 
     user = User.find(params[:id].to_i)
-    respond_to do |format|
-      if current_user.update(user_params)
-        format.html { redirect_to user, notice: t('controllers.common.notice_update', name: Book.model_name.human) }
-        format.json { render :show, status: :ok, location: user }
-      else
-        format.html { render :edit }
-        format.json { render json: user.errors, status: :unprocessable_entity }
-      end
+    if current_user.update(user_params)
+      redirect_to user, notice: t('controllers.common.notice_update', name: Book.model_name.human)
+    else
+      render :edit
     end
   end
 
