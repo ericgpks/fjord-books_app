@@ -29,29 +29,37 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
+ja:
   notice:
     success:
-      create: "%{name} was successfully created."
-      update: "%{name} was successfully updated."
-      destroy: "%{name} was successfully destroyed."
+      create: "%{name}の登録に成功しました"
+      update: "%{name}の更新に成功しました"
+      destroy: "%{name}の削除に成功しました"
 
   books:
-    show: "show"
-    back: "back"
-    new: "new"
-    submit: "submit"
-    editing: "Editing"
-    confirm: "Are you sure?"
+    show: "表示"
+    back: "戻る"
+    new: "追加"
+    submit: "登録する"
+    editing: "本の編集"
+    confirm: "削除してよろしいですか？"
 
-  activerecotd:
+  helpers:
+    submit:
+      create: "登録する"
+      update: "更新する"
+
+  activerecord:
     models:
-      book: "book"
+      book: "本"
     attributes:
       book:
-        books: "books"
-        show: "show"
-        edit: "edit"
-        destroy: "destroy"
-        new: "new"
-
+        title: "題名"
+        memo: "メモ"
+        author: "著者"
+        picture: "画像"
+        books: "一覧"
+        show: "表示"
+        edit: "編集"
+        destroy: "削除"
+        new: "追加"
