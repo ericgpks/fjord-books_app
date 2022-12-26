@@ -224,7 +224,7 @@ ja:
       next: '次'
       truncate: '...'
     notice: "成功しました"
-    alert: "失敗しました"
+    alert: "ログインしてください"
     users: 'ユーザー一覧'
   controllers:
     common:
