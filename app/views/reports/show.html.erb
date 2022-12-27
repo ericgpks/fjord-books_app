@@ -14,3 +14,8 @@
   <%= link_to 'Edit', edit_report_path(@report) %> |
 <% end %>
 <%= link_to 'Back', reports_path %>
+
+<p></p>
+<div>
+  <%= render "shared/comment_form", model: @report_comment %>
+</div>
