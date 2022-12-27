@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_26_081015) do
+ActiveRecord::Schema.define(version: 2022_12_27_035825) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 2022_12_26_081015) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "book_comments", force: :cascade do |t|
+    t.integer "book_id", null: false
+    t.integer "user_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_book_comments_on_book_id"
+    t.index ["user_id"], name: "index_book_comments_on_user_id"
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.text "memo"
@@ -56,6 +66,16 @@ ActiveRecord::Schema.define(version: 2022_12_26_081015) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
     t.index ["following_id"], name: "index_relationships_on_following_id"
+  end
+
+  create_table "report_comments", force: :cascade do |t|
+    t.integer "report_id", null: false
+    t.integer "user_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["report_id"], name: "index_report_comments_on_report_id"
+    t.index ["user_id"], name: "index_report_comments_on_user_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -84,5 +104,9 @@ ActiveRecord::Schema.define(version: 2022_12_26_081015) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "book_comments", "books"
+  add_foreign_key "book_comments", "users"
+  add_foreign_key "report_comments", "reports"
+  add_foreign_key "report_comments", "users"
   add_foreign_key "reports", "users"
 end
