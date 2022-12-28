@@ -34,9 +34,11 @@ group :development, :test do
 end
 
 group :development do
+  gem 'debug', '>= 1.0.0'
   gem 'erb_lint', require: false
   gem 'faker'
   gem 'i18n_generators'
+  gem 'letter_opener_web', '~> 2.0'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'rubocop-fjord', require: false
@@ -62,3 +64,6 @@ gem 'net-smtp'
 
 gem 'carrierwave'
 gem 'kaminari'
+
+gem 'devise'
+gem 'devise-i18n'

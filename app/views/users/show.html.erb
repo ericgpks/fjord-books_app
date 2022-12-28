@@ -1,0 +1,24 @@
+<p>
+  <strong><%= t('views.user.email') %>:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong><%= t('views.user.postal code') %>:</strong>
+  <%= @user.postal_code %>
+</p>
+
+<p>
+  <strong><%= t('views.user.address') %>:</strong>
+  <%= @user.address %>
+</p>
+
+<p>
+  <strong><%= t('views.user.introduction') %>:</strong>
+  <%= @user.introduction %>
+</p>
+
+<% if @user.id == current_user %>
+  <%= link_to t('views.common.edit'), edit_user_path(@user) %> |
+<% end %>
+<%= link_to t('views.common.back'), users_path %>
