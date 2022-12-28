@@ -11,7 +11,9 @@ class BooksController < ApplicationController
 
   # GET /books/1
   # GET /books/1.json
-  def show; end
+  def show
+    @comments = BookComment.joins(:user).where(book_id: params[:id])
+  end
 
   # GET /books/new
   def new
