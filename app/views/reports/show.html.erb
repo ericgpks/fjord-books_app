@@ -19,3 +19,19 @@
 <div>
   <%= render "shared/comment_form", model: @report_comment, model_name: 'report_comment', data_id: @report.id %>
 </div>
+
+<div>
+  <% @comments.each do |comment| %>
+    <strong>コメント:</strong>
+    <p><%= comment.content %></p>
+    <p>
+      <% if comment.user.name %>
+        <strong>名前:</strong>
+        <%= comment.user.name %>
+      <% else %>
+        <strong>メールアドレス:</strong>
+        <%= comment.user.email %>
+      <% end %>
+    </p>
+  <% end %>
+</div>

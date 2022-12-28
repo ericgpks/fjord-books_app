@@ -8,6 +8,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/1 or /reports/1.json
   def show
+    @comments = ReportComment.joins(:user).where(report_id: params[:id])
   end
 
   # GET /reports/new
