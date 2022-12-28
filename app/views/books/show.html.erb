@@ -25,5 +25,5 @@
 
 <p></p>
 <div>
-  <%= render "shared/comment_form", model: @book_comment %>
+  <%= render "shared/comment_form", model: @book_comment, model_name: 'book_comment', data_id: @book.id %>
 </div>
