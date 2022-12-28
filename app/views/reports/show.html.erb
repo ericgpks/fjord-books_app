@@ -33,5 +33,7 @@
         <%= comment.user.email %>
       <% end %>
     </p>
+    <strong>投稿日時:</strong>
+    <p><%= comment.created_at.strftime("%Y/%m/%d %T") %></p>
   <% end %>
 </div>
