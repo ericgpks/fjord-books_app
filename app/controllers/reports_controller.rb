@@ -26,7 +26,7 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
     @report.user_id = current_user.id
     if @report.save
-      redirect_to report_url(@report), notice: 'Report was successfully created.'
+      redirect_to report_url(@report), notice: Report.human_attribute_name(:success)
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class ReportsController < ApplicationController
   # PATCH/PUT /reports/1 or /reports/1.json
   def update
     if @report.update(report_params)
-      redirect_to report_url(@report), notice: 'Report was successfully updated.'
+      redirect_to report_url(@report), notice: Report.human_attribute_name(:update)
 
     else
       render :edit, status: :unprocessable_entity
@@ -45,7 +45,7 @@ class ReportsController < ApplicationController
   # DELETE /reports/1 or /reports/1.json
   def destroy
     @report.destroy
-    redirect_to reports_url, notice: 'Report was successfully destroyed.'
+    redirect_to reports_url, notice: Report.human_attribute_name(:destroy)
   end
 
   private

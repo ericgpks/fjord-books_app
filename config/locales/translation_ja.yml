@@ -21,6 +21,9 @@ ja:
       report:
         title: タイトル
         body: 内容
+        success: 日報が登録されました
+        update: 日報が更新されました
+        destroy: 日報が削除されました
       comment:
         content: コメント内容
         created_at: 投稿日時
