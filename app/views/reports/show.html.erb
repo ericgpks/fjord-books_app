@@ -21,19 +21,5 @@
 </div>
 
 <div>
-  <% @comments.each do |comment| %>
-    <strong>コメント:</strong>
-    <p><%= comment.content %></p>
-    <p>
-      <% if comment.user.name %>
-        <strong>名前:</strong>
-        <%= comment.user.name %>
-      <% else %>
-        <strong>メールアドレス:</strong>
-        <%= comment.user.email %>
-      <% end %>
-    </p>
-    <strong>投稿日時:</strong>
-    <p><%= comment.created_at.strftime("%Y/%m/%d %T") %></p>
-  <% end %>
+  <%= render "shared/comment_show", comments: @comments %>
 </div>
