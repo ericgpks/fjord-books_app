@@ -18,7 +18,11 @@ class UsersController < ApplicationController
       follow_user_id: follow_user_id,
       follower_user_id: current_user.id
     )
-    redirect_to users_path if follow.save
+    if follow.save
+      redirect_to users_path
+    else
+      render :show
+    end
   end
 
   def unfollow
@@ -26,8 +30,11 @@ class UsersController < ApplicationController
     follow_record = Follow.find_by(follow_user_id: unfollow_user_id, follower_user_id: current_user.id)
     return if follow_record.nil?
 
-    follow_record.destroy
-    redirect_to users_path
+    if follow_record.destroy
+      redirect_to users_path
+    else
+      render :show
+    end
   end
 
   def followings
