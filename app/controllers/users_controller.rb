@@ -23,10 +23,10 @@ class UsersController < ApplicationController
 
   def unfollow
     unfollow_user_id = params[:user_id].to_i
-    follow_record = Follow.where(follow_user_id: unfollow_user_id, follower_user_id: current_user.id)
-    return unless follow_record.exists?
+    follow_record = Follow.find_by(follow_user_id: unfollow_user_id, follower_user_id: current_user.id)
+    return if follow_record.nil?
 
-    Follow.destroy([follow_record.ids])
+    follow_record.destroy
     redirect_to users_path
   end
 
