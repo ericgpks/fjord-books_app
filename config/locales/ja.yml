@@ -218,14 +218,15 @@ ja:
       title_show: "%{name}の詳細"
       sign_out: ログアウト
       minimum_length: "%{length}文字以上"
-      follow: フォローする
-      unfollow: フォロー解除
     pagination:
       first: '最初'
       last: '最後'
       previous: '前'
       next: '次'
       truncate: '...'
+    follow:
+      follow: フォローする
+      unfollow: フォロー解除
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
