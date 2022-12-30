@@ -9,6 +9,10 @@ class User < ApplicationRecord
   validates :follow_user_id, :follower_user_id, presence: true
   validates :follow_user_id, uniqueness: { scope: :follower_user_id }
 
+  def follow?
+    Follow.find_by(follow_user_id: params[:id], follower_user_id: current_user.id).present?
+  end
+
   def followings
     follow_ids = Follow.where(follower_user_id: id).pluck(:follow_user_id)
     User.where(id: follow_ids)
