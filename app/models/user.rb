@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many :follows, dependent: :destroy
+  validates :follow_user_id, :follower_user_id, presence: true
+  validates :follow_user_id, uniqueness: { scope: :follower_user_id }
 
   def followings
     follow_ids = Follow.where(follower_user_id: id).pluck(:follow_user_id)
