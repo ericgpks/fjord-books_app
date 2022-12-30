@@ -6,8 +6,6 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many :follows, dependent: :destroy
-  validates :follow_user_id, :follower_user_id, presence: true
-  validates :follow_user_id, uniqueness: { scope: :follower_user_id }
 
   def follow?(follow_user_id, follower_user_id)
     Follow.find_by(follow_user_id: follow_user_id, follower_user_id: follower_user_id).present?
