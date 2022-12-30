@@ -9,9 +9,9 @@
 <% end %>
 
 <p>
-  <%= link_to "followings", controller: "users", action: "followings", id: @user.id %>
+  <%= link_to "followings", followings_user_path, id: @user.id %>
   ||
-  <%= link_to "followers", controller: "users", action: "followers", id: @user.id %>
+  <%= link_to "followers", followers_user_path, id: @user.id %>
 </p>
 
 <p>
