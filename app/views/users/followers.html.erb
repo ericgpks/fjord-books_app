@@ -13,7 +13,7 @@
   </thead>
 
   <tbody>
-  <% unless @followers.blank? %>
+  <% if @followers.present? %>
     <% @followers.each do |follower| %>
       <tr>
         <th>
