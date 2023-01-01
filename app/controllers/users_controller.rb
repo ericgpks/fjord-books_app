@@ -8,8 +8,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @is_follow = @user.follow?(params[:id], current_user.id)
-    @followings_count = followings.count
-    @followers_count = followers.count
   end
 
   def follow
@@ -35,13 +33,5 @@ class UsersController < ApplicationController
     else
       render :show
     end
-  end
-
-  def followings
-    @followings = User.find(params[:id]).followings
-  end
-
-  def followers
-    @followers = User.find(params[:id]).followers
   end
 end

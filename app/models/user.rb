@@ -5,19 +5,20 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :avatar
-  has_many :follows, dependent: :destroy
+  has_many :active_relationships, class_name: 'Follow', foreign_key: :follower_user_id, dependent: :destroy
+  has_many :passive_relationships, class_name: 'Follow', foreign_key: :follow_user_id, dependent: :destroy
+  has_many :follower_users, through: :active_relationships, source: :follow_user
+  has_many :follow_users, through: :passive_relationships, source: :follower_user
 
-  def follow?(follow_user_id, follower_user_id)
-    Follow.find_by(follow_user_id: follow_user_id, follower_user_id: follower_user_id).present?
+  def follow(other_user)
+    active_relationships.create(follow_user_id: other_user.id)
   end
 
-  def followings
-    follow_ids = Follow.where(follower_user_id: id).pluck(:follow_user_id)
-    User.where(id: follow_ids)
+  def unfollow(other_user)
+    active_relationships.find_by(follow_user_id: other_user.id).destroy
   end
 
-  def followers
-    follower_ids = Follow.where(follow_user_id: id).pluck(:follower_user_id)
-    User.where(id: follower_ids)
+  def following?(other_user)
+    follow.include?(other_user)
   end
 end
