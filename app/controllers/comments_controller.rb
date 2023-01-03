@@ -12,15 +12,15 @@ class CommentsController < ApplicationController
       book_comment.save
       redirect_to book_path(params[:data].to_i)
     end
-    if params[:model] == 'report_comment'
-      report_comment = ReportComment.new(
-        user_id: current_user.id,
-        report_id: params[:data].to_i,
-        content: params[:content]
-      )
-      report_comment.save
-      redirect_to report_path(params[:data].to_i)
-    end
+    return unless params[:model] == 'report_comment'
+
+    report_comment = ReportComment.new(
+      user_id: current_user.id,
+      report_id: params[:data].to_i,
+      content: params[:content]
+    )
+    report_comment.save
+    redirect_to report_path(params[:data].to_i)
   end
 
   private
