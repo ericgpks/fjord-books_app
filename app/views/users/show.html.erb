@@ -16,11 +16,11 @@
 
 <p>
   <strong>followings:</strong>
-  <%= @user.followings.count %>
+  <%= @user.follow_users.count %>
 </p>
 <p>
   <strong>followers:</strong>
-  <%= @user.followers.count %>
+  <%= @user.follower_users.count %>
 </p>
 <p>
   <strong><%= User.human_attribute_name(:email) %>:</strong>
