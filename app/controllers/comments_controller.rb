@@ -4,9 +4,10 @@ class CommentsController < ApplicationController
   def create
     comment_params
     if params[:model] == 'book_comment'
-      book_comment = BookComment.new(
+      book_comment = Comment.new(
         user_id: current_user.id,
-        book_id: params[:data].to_i,
+        comment_record_id: params[:data].to_i,
+        comment_record_type: 'Book',
         content: params[:content]
       )
       book_comment.save
@@ -14,9 +15,10 @@ class CommentsController < ApplicationController
     end
     return unless params[:model] == 'report_comment'
 
-    report_comment = ReportComment.new(
+    report_comment = Comment.new(
       user_id: current_user.id,
-      report_id: params[:data].to_i,
+      comment_record_id: params[:data].to_i,
+      comment_record_type: 'Report',
       content: params[:content]
     )
     report_comment.save
