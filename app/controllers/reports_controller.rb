@@ -37,7 +37,6 @@ class ReportsController < ApplicationController
     render :edit, status: :forbidden if @report.user_id != current_user
     if @report.update(report_params)
       redirect_to report_url(@report), notice: Report.human_attribute_name(:update)
-
     else
       render :edit, status: :unprocessable_entity
     end
@@ -46,8 +45,11 @@ class ReportsController < ApplicationController
   # DELETE /reports/1 or /reports/1.json
   def destroy
     render :show, status: :forbidden if @report.user_id != current_user
-    @report.destroy
-    redirect_to reports_url, notice: Report.human_attribute_name(:destroy)
+    if @report.destroy
+      redirect_to reports_url, notice: Report.human_attribute_name(:destroy)
+    else
+      render :show, status: :unprocessable_entity
+    end
   end
 
   private
