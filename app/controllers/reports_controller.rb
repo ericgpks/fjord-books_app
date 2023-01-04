@@ -34,6 +34,7 @@ class ReportsController < ApplicationController
 
   # PATCH/PUT /reports/1 or /reports/1.json
   def update
+    render :edit, status: :forbidden if @report.user_id != current_user
     if @report.update(report_params)
       redirect_to report_url(@report), notice: Report.human_attribute_name(:update)
 
@@ -44,6 +45,7 @@ class ReportsController < ApplicationController
 
   # DELETE /reports/1 or /reports/1.json
   def destroy
+    render :show, status: :forbidden if @report.user_id != current_user
     @report.destroy
     redirect_to reports_url, notice: Report.human_attribute_name(:destroy)
   end
