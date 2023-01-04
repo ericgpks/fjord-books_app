@@ -3,5 +3,5 @@
 class Book < ApplicationRecord
   mount_uploader :picture, PictureUploader
 
-  has_many :comments, as: :comment_record
+  has_many :comments, as: :comment_record, dependent: :destroy
 end
