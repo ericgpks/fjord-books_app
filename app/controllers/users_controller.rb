@@ -21,9 +21,8 @@ class UsersController < ApplicationController
   def unfollow
     unfollow_user_id = params[:id].to_i
     follow_record = Follow.find_by(follow_user_id: unfollow_user_id, follower_user_id: current_user.id)
-    render :show if follow_record.nil?
 
-    if follow_record.destroy
+    if follow_record&.destroy
       redirect_to users_path
     else
       render :show
