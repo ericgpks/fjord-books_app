@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :avatar
-  has_many :active_relationships, class_name: 'Follow', foreign_key: :follower_user_id, dependent: :destroy
-  has_many :passive_relationships, class_name: 'Follow', foreign_key: :follow_user_id, dependent: :destroy
-  has_many :follower_users, through: :active_relationships, source: :follow_user
-  has_many :follow_users, through: :passive_relationships, source: :follower_user
+  has_many :active_relationships, class_name: 'Follow', foreign_key: :follow_user_id, dependent: :destroy
+  has_many :passive_relationships, class_name: 'Follow', foreign_key: :follower_user_id, dependent: :destroy
+  has_many :follower_users, through: :active_relationships, source: :follower_user
+  has_many :follow_users, through: :passive_relationships, source: :follow_user
 
   def follow(other_user)
     active_relationships.create(follow_user_id: other_user.id)
