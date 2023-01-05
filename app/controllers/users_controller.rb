@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def show; end
 
   def follow
-    follow = current_user.active_relationships.new(follower_user_id: params[:id])
+    follow = current_user.passive_relationships.new(follow_user_id: params[:id])
     if follow.save
       redirect_to users_path
     else
