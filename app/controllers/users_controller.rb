@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def follow
-    follow_user_id = params[:user_id].to_i
+    follow_user_id = params[:id].to_i
     follow = Follow.new(
       follow_user_id: follow_user_id,
       follower_user_id: current_user.id
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def unfollow
-    unfollow_user_id = params[:user_id].to_i
+    unfollow_user_id = params[:id].to_i
     follow_record = Follow.find_by(follow_user_id: unfollow_user_id, follower_user_id: current_user.id)
     render :show if follow_record.nil?
 
