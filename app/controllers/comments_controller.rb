@@ -3,26 +3,20 @@
 class CommentsController < ApplicationController
   def create
     comment_params
-    if params[:model] == 'book_comment'
-      book_comment = Comment.new(
-        user_id: current_user.id,
-        comment_record_id: params[:data].to_i,
-        comment_record_type: 'Book',
-        content: params[:content]
-      )
-      book_comment.save
-      redirect_to book_path(params[:data].to_i)
-    end
-    return unless params[:model] == 'report_comment'
-
-    report_comment = Comment.new(
+    record_type = { 'book_comment': 'Book', 'report_comment': 'Report' }
+    comment = Comment.new(
       user_id: current_user.id,
       comment_record_id: params[:data].to_i,
-      comment_record_type: 'Report',
+      comment_record_type: record_type[params[:model].to_sym],
       content: params[:content]
     )
-    report_comment.save
-    redirect_to report_path(params[:data].to_i)
+    comment.save
+
+    if params[:model] == 'book_comment'
+      redirect_to book_path(params[:data].to_i)
+    else
+      redirect_to report_path(params[:data].to_i)
+    end
   end
 
   private
