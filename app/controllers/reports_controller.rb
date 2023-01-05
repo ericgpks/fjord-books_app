@@ -26,7 +26,7 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
     @report.user_id = current_user.id
     if @report.save
-      redirect_to report_url(@report), notice: Report.human_attribute_name(:success)
+      redirect_to report_path(@report), notice: Report.human_attribute_name(:success)
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,9 +34,12 @@ class ReportsController < ApplicationController
 
   # PATCH/PUT /reports/1 or /reports/1.json
   def update
-    render :edit, status: :forbidden if @report.user_id != current_user
+    if @report.user_id != current_user.id
+      redirect_to reports_path(@report)
+      return
+    end
     if @report.update(report_params)
-      redirect_to report_url(@report), notice: Report.human_attribute_name(:update)
+      redirect_to report_path(@report), notice: Report.human_attribute_name(:update)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,9 +47,12 @@ class ReportsController < ApplicationController
 
   # DELETE /reports/1 or /reports/1.json
   def destroy
-    render :show, status: :forbidden if @report.user_id != current_user
+    if @report.user_id != current_user.id
+      redirect_to reports_path(@report)
+      return
+    end
     if @report.destroy
-      redirect_to reports_url, notice: Report.human_attribute_name(:destroy)
+      redirect_to reports_path, notice: Report.human_attribute_name(:destroy)
     else
       render :show, status: :unprocessable_entity
     end
