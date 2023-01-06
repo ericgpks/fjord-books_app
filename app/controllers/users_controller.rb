@@ -6,7 +6,9 @@ class UsersController < ApplicationController
     @users = User.with_attached_avatar.order(:id).page(params[:page])
   end
 
-  def show; end
+  def show
+    @follow = Follow.new
+  end
 
   def follow
     follow = current_user.passive_relationships.new(follow_user_id: params[:id])
