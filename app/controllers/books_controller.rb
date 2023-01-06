@@ -12,7 +12,7 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
-    @comments = Comment.joins(:user).where(comment_record_id: params[:id], comment_record_type: 'Book')
+    @comments = @book.comments.eager_load(:user)
   end
 
   # GET /books/new

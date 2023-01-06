@@ -10,7 +10,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/1 or /reports/1.json
   def show
-    @comments = Comment.joins(:user).where(comment_record_id: params[:id], comment_record_type: 'Report')
+    @comments = @report.comments.eager_load(:user)
   end
 
   # GET /reports/new
