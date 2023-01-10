@@ -34,6 +34,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'debug', '>= 1.0.0'
   gem 'erb_lint', require: false
   gem 'faker'
   gem 'i18n_generators'

@@ -1,5 +1,27 @@
 <h1><%= t('views.common.title_show', name: User.model_name.human) %></h1>
 
+<% if current_user != @user %>
+  <% if Follow.follow?(@user.id, current_user.id) %>
+    <%= button_to t('views.follow.unfollow'), unfollow_user_path(@user), { method: :post } %>
+  <% else %>
+    <%= button_to t('views.follow.follow'), follow_user_path(@user), { method: :post } %>
+  <% end %>
+<% end %>
+
+<p>
+  <%= link_to "followings", followings_user_path(@user) %>
+  ||
+  <%= link_to "followers", followers_user_path(@user) %>
+</p>
+
+<p>
+  <strong>followings:</strong>
+  <%= @user.follow_users.count %>
+</p>
+<p>
+  <strong>followers:</strong>
+  <%= @user.follower_users.count %>
+</p>
 <p>
   <strong><%= User.human_attribute_name(:email) %>:</strong>
   <%= @user.email %>

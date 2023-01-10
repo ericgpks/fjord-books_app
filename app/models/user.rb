@@ -5,4 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :avatar
+  has_many :active_relationships, class_name: 'Follow', foreign_key: :follow_user_id, dependent: :destroy, inverse_of: :follow_user
+  has_many :passive_relationships, class_name: 'Follow', foreign_key: :follower_user_id, dependent: :destroy, inverse_of: :follower_user
+  has_many :follower_users, through: :active_relationships, source: :follower_user, inverse_of: :follow_users
+  has_many :follow_users, through: :passive_relationships, source: :follow_user, inverse_of: :follower_users
+
+  def follow(other_user)
+    active_relationships.create(follow_user_id: other_user.id)
+  end
+
+  def unfollow(other_user)
+    active_relationships.find_by(follow_user_id: other_user.id).destroy
+  end
 end
