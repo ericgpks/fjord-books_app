@@ -22,3 +22,12 @@
 
 <%= link_to t('views.common.edit'), edit_book_path(@book) %> |
 <%= link_to t('views.common.back'), books_path %>
+
+<p></p>
+<div>
+  <%= render "shared/comment_form", model: @book_comment, model_name: 'book_comment', data_id: @book.id %>
+</div>
+
+<div>
+  <%= render "shared/comment_show", comments: @comments %>
+</div>

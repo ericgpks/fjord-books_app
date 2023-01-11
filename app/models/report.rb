@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-class Book < ApplicationRecord
-  mount_uploader :picture, PictureUploader
-
+class Report < ApplicationRecord
   has_many :comments, as: :comment_record, dependent: :destroy
 end

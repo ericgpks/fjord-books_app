@@ -1,0 +1,15 @@
+<%= form_with(model: model, url: "/comments", method: :post, local: true) do |form| %>
+  <div class="field">
+    <%= form.label Comment.human_attribute_name(:content) %>
+    <%= form.text_area :content, required: true %>
+  </div>
+
+  <span>
+    <%= form.hidden_field(:model, :value => model_name) %>
+    <%= form.hidden_field(:data, :value => data_id) %>
+  </span>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

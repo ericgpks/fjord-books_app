@@ -1,0 +1,23 @@
+<p>
+  <strong><%= Report.human_attribute_name(:title) %>:</strong>
+  <%= @report.title %>
+</p>
+
+<p>
+  <strong><%= Report.human_attribute_name(:body) %>:</strong>
+  <%= @report.body %>
+</p>
+
+<% if @report.user_id == current_user.id %>
+  <%= link_to t('views.common.edit'), edit_report_path(@report) %> |
+<% end %>
+<%= link_to t('views.common.back'), reports_path %>
+
+<p></p>
+<div>
+  <%= render "shared/comment_form", model: @report_comment, model_name: 'report_comment', data_id: @report.id %>
+</div>
+
+<div>
+  <%= render "shared/comment_show", comments: @comments %>
+</div>

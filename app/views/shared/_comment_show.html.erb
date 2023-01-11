@@ -1,0 +1,15 @@
+<% @comments.each do |comment| %>
+  <strong><%= Comment.model_name.human %>:</strong>
+  <p><%= comment.content %></p>
+  <p>
+    <% if comment.user.name %>
+      <strong><%= User.human_attribute_name(:name) %>:</strong>
+      <%= comment.user.name %>
+    <% else %>
+      <strong><%= User.human_attribute_name(:email) %>:</strong>
+      <%= comment.user.email %>
+    <% end %>
+  </p>
+  <strong><%= Comment.human_attribute_name(:created_at) %>:</strong>
+  <p><%= l comment.created_at, format: :long %></p>
+<% end %>
